@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 
 const screen = Dimensions.get("window");
-const buttonWidth = screen.width / 4;
+const buttonWidth = screen.width / 5;
 
 export default ({ onPress, text, size, theme }) => {
   const buttonStyles = [styles.button];
@@ -29,10 +29,11 @@ export default ({ onPress, text, size, theme }) => {
 const styles = StyleSheet.create({
     text: {
         color: "#fff",
-        fontSize: 25
+        fontSize: 30
     },
     textSecondary: {
-        color: "#060606"
+        color: "#060606",
+        fontSize: 30
     },
     button: {
         backgroundColor: "#333333",

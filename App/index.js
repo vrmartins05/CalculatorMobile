@@ -9,14 +9,15 @@ export default function App() {
   const [ prevVal, setPrevVal ] = useState(null);
 
   handleTap = (type, value) => {
+    
     if(type === "number") {
-        setCurrVal(`${currVal}${value}`);
+        setCurrVal(`${currVal}${value}`);        
     }
 
     if(type === "operator") {
         setOperator(value);
         setPrevVal(currVal);
-        setCurrVal("0");
+        setCurrVal(value);
     }
 
     if(type === "clear") {
@@ -41,6 +42,7 @@ export default function App() {
             setCurrVal(previous + current);
             setOperator(null);
             setPrevVal(null);
+            
         }
 
         if(operator === "/") {
@@ -60,6 +62,10 @@ export default function App() {
             setOperator(null);
             setPrevVal(null);
         }
+    }
+
+    if(type === "2x") {
+        setCurrVal(`${parseFloat(currVal) * parseFloat(currVal)}`);
     }
 
   }
@@ -94,8 +100,9 @@ export default function App() {
           <Button text="+" theme="accent" onPress={() => this.handleTap("operator","+")} />
       </Row>
       <Row>
-          <Button text="0" size="double" onPress={() => this.handleTap("number",0)} />
+          <Button text="0" onPress={() => this.handleTap("number",0)} />
           <Button text="." onPress={() => this.handleTap("number",".")} />
+          <Button text="x²" theme="secondary" onPress={() => this.handleTap("2x")} />
           <Button text="=" theme="accent" onPress={() => this.handleTap("equal")} />
       </Row>
     </SafeAreaView>
